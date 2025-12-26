@@ -514,16 +514,18 @@ const Order = () => {
                                   </div>
                                 </label>
 
-                                {selectedEntry && (
+                                    {selectedEntry && (
                                   <div className="flex items-center gap-2">
                                     <input
                                       type="number"
                                       min={1}
-                                      value={selectedEntry.quantity}
+                                      value={selectedEntry.quantity || ""}
                                       onChange={(e) => {
-                                        const q = Math.max(1, parseInt(e.target.value || "1"));
+                                        const val = e.target.value;
+                                        const q = val === "" ? 0 : Math.max(1, parseInt(val));
                                         setSelectedProductsMultiple((prev) => prev.map((it) => (it.id === product.id ? { ...it, quantity: q } : it)));
                                       }}
+                                      placeholder="ගණන"
                                       className="w-16 rounded-md border px-2 py-1 text-sm"
                                     />
                                   </div>
