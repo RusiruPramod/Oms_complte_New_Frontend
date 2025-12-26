@@ -43,12 +43,14 @@ const Order = () => {
     mobile: "",
     mobile2: "",
     product: "",
-    quantity: "1",
+    quantity: "",
   });
   const [inquiry, setInquiry] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [listOpen, setListOpen] = useState(false);
   const [showAdditionalMobile, setShowAdditionalMobile] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Totals calculation (single or multiple) - delivery charge is applied once per order
   const totals = useMemo(() => {
@@ -234,6 +236,29 @@ const Order = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Hide/show header on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 10) {
+        // Always show header at the top
+        setShowHeader(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide header
+        setShowHeader(false);
+      } else {
+        // Scrolling up - show header
+        setShowHeader(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   // Auto-scroll to order form on mobile devices
   useEffect(() => {
     const isMobile = window.innerWidth < 1024; // lg breakpoint
@@ -266,7 +291,9 @@ const Order = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Header */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
+      <header className={`bg-white shadow-md sticky top-0 z-50 transition-transform duration-300 ${
+        showHeader ? 'translate-y-0' : '-translate-y-full'
+      }`}>
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <img src={logo} alt="Logo" className="h-16 w-auto" />
           <Button
