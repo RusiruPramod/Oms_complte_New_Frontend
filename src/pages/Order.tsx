@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,6 +31,7 @@ const testimonials = [
 const Order = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const orderFormRef = useRef<HTMLDivElement>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -233,6 +234,35 @@ const Order = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Auto-scroll to order form on mobile devices
+  useEffect(() => {
+    const isMobile = window.innerWidth < 1024; // lg breakpoint
+    
+    if (isMobile && orderFormRef.current) {
+      // Use requestAnimationFrame for better timing
+      const scrollToForm = () => {
+        setTimeout(() => {
+          orderFormRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+        }, 100);
+      };
+
+      // Try multiple times to ensure it works
+      const timer1 = setTimeout(scrollToForm, 500);
+      const timer2 = setTimeout(scrollToForm, 1000);
+      const timer3 = setTimeout(scrollToForm, 2000);
+      
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        clearTimeout(timer3);
+      };
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Header */}
@@ -299,7 +329,7 @@ const Order = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Order Form */}
-          <div className="lg:col-span-2">
+          <div ref={orderFormRef} className="lg:col-span-2">
             <Card className="shadow-xl">
               <CardContent className="p-8">
                 <h2 className="text-3xl font-bold mb-6 text-center">ඔබගේ ඇණවුම කරන්න</h2>
