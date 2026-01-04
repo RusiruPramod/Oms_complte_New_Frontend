@@ -419,32 +419,32 @@ export const InvoiceModal = ({ isOpen, onClose, order }: InvoiceModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl max-h-[95vh] overflow-hidden p-0">
+      <DialogContent className="max-w-3xl max-h-[95vh] overflow-hidden p-0 w-[95vw] sm:w-full">
         <div className="overflow-y-auto max-h-[95vh]" ref={invoiceRef}>
           {/* Header Cover Banner */}
-          <div className="relative h-32">
+          <div className="relative h-24 sm:h-32">
             <img 
               src={productAd} 
               alt="Header Cover" 
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 flex items-center justify-between px-8">
-              <div className="flex items-center gap-4">
-                <div className="bg-white p-2 rounded-lg shadow-lg">
-                  <img src={logo} alt="Company Logo" className="h-12 w-auto" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 flex items-center justify-between px-3 sm:px-8">
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="bg-white p-1 sm:p-2 rounded-lg shadow-lg">
+                  <img src={logo} alt="Company Logo" className="h-8 sm:h-12 w-auto" />
                 </div>
                 <div className="text-white">
-                  <h2 className="text-3xl font-bold">INVOICE</h2>
-                  <p className="text-sm opacity-90">Order Management System</p>
+                  <h2 className="text-xl sm:text-3xl font-bold">INVOICE</h2>
+                  <p className="text-xs sm:text-sm opacity-90">Order Management System</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Invoice Content */}
-          <div className="p-8 space-y-6 bg-white">
+          <div className="p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 bg-white">
             {/* Invoice Header Info */}
-            <div className="grid grid-cols-2 gap-6 pb-6 border-b border-green-100">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-green-100">
               <div>
                 <h3 className="text-sm font-semibold text-green-700 mb-3">INVOICE DETAILS</h3>
                   <div className="space-y-2 text-sm">
@@ -483,7 +483,7 @@ export const InvoiceModal = ({ isOpen, onClose, order }: InvoiceModalProps) => {
             </div>
 
             {/* Customer & Delivery Details */}
-            <div className="grid md:grid-cols-2 gap-6 pb-6 border-b border-green-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-green-100">
               <div>
                 <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
                   <span className="w-1 h-4 bg-green-600 rounded"></span>
@@ -526,13 +526,13 @@ export const InvoiceModal = ({ isOpen, onClose, order }: InvoiceModalProps) => {
             </div>
 
             {/* Order Items Table */}
-            <div className="pb-6">
-              <h3 className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <div className="pb-4 sm:pb-6">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-700 mb-3 sm:mb-4 flex items-center gap-2">
                 <span className="w-1 h-4 bg-green-600 rounded"></span>
                 ORDER ITEMS
               </h3>
-              <div className="border border-green-100 rounded-lg overflow-hidden shadow-sm">
-                <table className="w-full">
+              <div className="border border-green-100 rounded-lg overflow-hidden shadow-sm overflow-x-auto">
+                <table className="w-full min-w-[500px]">
                   <thead className="bg-green-50 border-b border-green-100">
                     <tr>
                       <th className="px-4 py-3 text-left text-xs font-semibold text-green-700">PRODUCT</th>
@@ -568,8 +568,8 @@ export const InvoiceModal = ({ isOpen, onClose, order }: InvoiceModalProps) => {
             </div>
 
             {/* Totals Section */}
-            <div className="flex justify-end pb-6 border-b border-green-100">
-              <div className="w-80 space-y-3 bg-green-50 p-4 rounded-lg border border-green-100">
+            <div className="flex justify-end pb-4 sm:pb-6 border-b border-green-100">
+              <div className="w-full sm:w-80 space-y-2 sm:space-y-3 bg-green-50 p-3 sm:p-4 rounded-lg border border-green-100">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Subtotal:</span>
                   <span className="font-semibold">Rs. {subtotal.toLocaleString()}</span>

@@ -411,25 +411,26 @@ Total Orders: ${selectedOrders.length}
         {/* Courier Orders Table */}
         <Card>
           <CardContent className="p-0">
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="py-4 text-left">Customer</TableHead>
-                    <TableHead className="py-4 text-center">Address</TableHead>
-                    <TableHead className="py-4 text-center">Mobile</TableHead>
-                    <TableHead className="py-4 text-center">Product</TableHead>
-                    <TableHead className="py-4 text-center">Quantity</TableHead>
-                    <TableHead className="py-4 text-center">Status</TableHead>
-                    <TableHead className="py-4 text-center">Date</TableHead>
-                    <TableHead className="py-4 text-center">Feedback</TableHead>
-                    <TableHead className="py-4 text-center">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
+            <div className="overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0">
+              <div className="inline-block min-w-full align-middle">
+                <Table className="min-w-[1000px]">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-left text-xs sm:text-sm whitespace-nowrap">Customer</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Address</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Mobile</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Product</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Quantity</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Status</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Date</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Feedback</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
                 <TableBody>
                   {filteredOrders.map((order) => (
                     <TableRow key={order.id} className={manuallyUpdatedOrders.has(order.id) ? "bg-blue-50" : ""}>
-                      <TableCell className="font-medium py-4">
+                      <TableCell className="font-medium py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">
                         <div className="flex items-center gap-2">
                           {order.fullName}
                           {manuallyUpdatedOrders.has(order.id) && (
@@ -439,13 +440,13 @@ Total Orders: ${selectedOrders.length}
                           )}
                         </div>
                       </TableCell>
-                      <TableCell className="py-4 text-center max-w-xs truncate">{order.address}</TableCell>
-                      <TableCell className="py-4 text-center">{order.mobile}</TableCell>
-                      <TableCell className="py-4 text-center">{order.product_name}</TableCell>
-                      <TableCell className="py-4 text-center">{order.quantity}</TableCell>
-                      <TableCell className="py-4 text-center">{getStatusBadge(order.status)}</TableCell>
-                      <TableCell className="py-4 text-center">{new Date(order.createdAt).toLocaleDateString()}</TableCell>
-                      <TableCell className="py-4 text-center">
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center max-w-[120px] sm:max-w-xs truncate text-xs sm:text-sm">{order.address}</TableCell>
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">{order.mobile}</TableCell>
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">{order.product_name}</TableCell>
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm">{order.quantity}</TableCell>
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm">{getStatusBadge(order.status)}</TableCell>
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">{new Date(order.createdAt).toLocaleDateString()}</TableCell>
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm">
                         {/* Feedback content based on status */}
                         {order.status === 'delivered' ? (
                           <span className="text-green-500 font-semibold">Delivered on time</span>
@@ -503,6 +504,7 @@ Total Orders: ${selectedOrders.length}
                   No courier orders found
                 </div>
               )}
+            </div>
             </div>
           </CardContent>
         </Card>

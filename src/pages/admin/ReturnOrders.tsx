@@ -250,7 +250,7 @@ const AdminReturnOrders = () => {
         </div>
 
         {/* Stats Card */}
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-gray-600">Total Returns</CardTitle>
@@ -340,28 +340,29 @@ const AdminReturnOrders = () => {
                   <p className="text-sm text-gray-500">Orders marked as returned will appear here</p>
                 </div>
               ) : (
-                <div className="overflow-x-auto border rounded-lg">
-                  <Table>
-                    <TableHeader className="bg-gray-50 border-b">
-                      <TableRow className="hover:bg-gray-50">
-                        <TableHead className="w-24 font-semibold text-gray-700">Order ID</TableHead>
-                        <TableHead className="w-32 font-semibold text-gray-700">Customer</TableHead>
-                        <TableHead className="w-24 font-semibold text-gray-700">Mobile</TableHead>
-                        <TableHead className="w-40 font-semibold text-gray-700">Product</TableHead>
-                        <TableHead className="w-16 font-semibold text-gray-700 text-center">Qty</TableHead>
-                        <TableHead className="w-24 font-semibold text-gray-700">Status</TableHead>
-                        <TableHead className="w-28 font-semibold text-gray-700">Date</TableHead>
-                        <TableHead className="w-40 font-semibold text-gray-700 text-right">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
+                <div className="overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0 border rounded-lg">
+                  <div className="inline-block min-w-full align-middle">
+                    <Table className="min-w-[800px]">
+                      <TableHeader className="bg-gray-50 border-b">
+                        <TableRow className="hover:bg-gray-50">
+                          <TableHead className="w-20 sm:w-24 font-semibold text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Order ID</TableHead>
+                          <TableHead className="w-28 sm:w-32 font-semibold text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Customer</TableHead>
+                          <TableHead className="w-20 sm:w-24 font-semibold text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Mobile</TableHead>
+                          <TableHead className="w-32 sm:w-40 font-semibold text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Product</TableHead>
+                          <TableHead className="w-12 sm:w-16 font-semibold text-gray-700 text-center py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Qty</TableHead>
+                          <TableHead className="w-20 sm:w-24 font-semibold text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Status</TableHead>
+                          <TableHead className="w-24 sm:w-28 font-semibold text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Date</TableHead>
+                          <TableHead className="w-36 sm:w-40 font-semibold text-gray-700 text-right py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
                     <TableBody>
                       {paginatedOrders.map((order) => (
                         <TableRow key={order.id} className="hover:bg-blue-50 transition-colors border-b last:border-b-0">
-                          <TableCell className="font-medium text-gray-900 py-4">{order.id}</TableCell>
-                          <TableCell className="text-gray-800 py-4">{order.fullName}</TableCell>
-                          <TableCell className="text-gray-700 py-4">{order.mobile}</TableCell>
-                          <TableCell className="text-gray-700 py-4 truncate">{order.product_name || order.product || 'N/A'}</TableCell>
-                          <TableCell className="text-gray-700 py-4 text-center font-medium">{order.quantity}</TableCell>
+                          <TableCell className="font-medium text-gray-900 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">{order.id}</TableCell>
+                          <TableCell className="text-gray-800 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">{order.fullName}</TableCell>
+                          <TableCell className="text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">{order.mobile}</TableCell>
+                          <TableCell className="text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm truncate max-w-[120px] sm:max-w-[200px]">{order.product_name || order.product || 'N/A'}</TableCell>
+                          <TableCell className="text-gray-700 py-3 px-2 sm:py-4 sm:px-4 text-center font-medium text-xs sm:text-sm">{order.quantity}</TableCell>
                           <TableCell className="py-4">
                             <Badge className={`${getStatusBadgeColor(order.status)} font-medium`}>
                               {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
@@ -397,6 +398,7 @@ const AdminReturnOrders = () => {
                       ))}
                     </TableBody>
                   </Table>
+                </div>
                 </div>
               )}
 

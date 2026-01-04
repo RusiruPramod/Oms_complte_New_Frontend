@@ -207,29 +207,31 @@ const Products = () => {
         ) : (
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Package className="w-5 h-5" />
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <Package className="w-4 h-4 sm:w-5 sm:h-5" />
                 Product List ({products.length})
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-32 text-left">Product Name</TableHead>
-                    <TableHead className="w-28 text-center">Price (Rs.)</TableHead>
-                    <TableHead className="w-28 text-center">Extra Charge (Rs.)</TableHead>
-                    <TableHead className="w-28 text-center">Total (Rs.)</TableHead>
-                    <TableHead className="w-32 text-center">Delivery Charge (Rs.)</TableHead>
-                    <TableHead className="w-36 text-center">Availability</TableHead>
-                    <TableHead className="w-48 text-center">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
+              <div className="overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0">
+                <div className="inline-block min-w-full align-middle">
+                  <Table className="min-w-[900px]">
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-32 text-left py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Product Name</TableHead>
+                        <TableHead className="w-24 sm:w-28 text-center py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Price (Rs.)</TableHead>
+                        <TableHead className="w-24 sm:w-28 text-center py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Extra Charge (Rs.)</TableHead>
+                        <TableHead className="w-24 sm:w-28 text-center py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Total (Rs.)</TableHead>
+                        <TableHead className="w-28 sm:w-32 text-center py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Delivery Charge (Rs.)</TableHead>
+                        <TableHead className="w-32 sm:w-36 text-center py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Availability</TableHead>
+                        <TableHead className="w-40 sm:w-48 text-center py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
                 <TableBody>
                   {products.map((product) => (
                     <TableRow key={product.id}>
-                      <TableCell className="font-medium max-w-[16rem] truncate" title={product.name}>{product.name}</TableCell>
-                        <TableCell className="text-center font-semibold w-28">
+                      <TableCell className="font-medium max-w-[10rem] sm:max-w-[16rem] truncate py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm" title={product.name}>{product.name}</TableCell>
+                        <TableCell className="text-center font-semibold w-24 sm:w-28 py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">
                           {product.price.toLocaleString()}
                         </TableCell>
                         <TableCell className="text-center w-28">
@@ -308,7 +310,9 @@ const Products = () => {
                     </TableRow>
                   ))}
                 </TableBody>
-              </Table>
+                </Table>
+              </div>
+            </div>
             </CardContent>
           </Card>
         )}

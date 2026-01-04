@@ -398,7 +398,7 @@ Weight: Standard
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
@@ -451,10 +451,10 @@ Weight: Standard
         {/* Filters */}
         <Card>
           <CardHeader>
-            <CardTitle>Search & Filter</CardTitle>
+            <CardTitle className="text-lg sm:text-xl">Filters</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input
@@ -483,7 +483,7 @@ Weight: Standard
         {/* Delivery Orders Table */}
         <Card>
           <CardContent className="p-0">
-            <div className="p-4 flex items-center justify-between gap-4">
+            <div className="p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
               <div className="flex items-center gap-3">
                 <label className="inline-flex items-center gap-2">
                   <input
@@ -493,43 +493,44 @@ Weight: Standard
                     className="w-4 h-4"
                     title="Select all"
                   />
-                  <span className="text-sm text-muted-foreground">Select All</span>
+                  <span className="text-xs sm:text-sm text-muted-foreground">Select All</span>
                 </label>
-                <div className="text-sm text-muted-foreground">{filteredOrders.length} shown</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{filteredOrders.length} shown</div>
               </div>
-              <div className="flex items-center gap-3">
-                <Button variant="outline" onClick={exportSelected} title="Export selected to Excel">
-                  <Download className="w-4 h-4 mr-2" /> Export Selected
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <Button variant="outline" size="sm" onClick={exportSelected} title="Export selected to Excel" className="text-xs sm:text-sm">
+                  <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" /> <span className="hidden sm:inline">Export</span> Selected
                 </Button>
-                <Button variant="outline" onClick={exportAll} title="Export all to Excel">
-                  <Package className="w-4 h-4 mr-2" /> Export All
+                <Button variant="outline" size="sm" onClick={exportAll} title="Export all to Excel" className="text-xs sm:text-sm">
+                  <Package className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" /> <span className="hidden sm:inline">Export</span> All
                 </Button>
-                <Button variant="outline" onClick={exportToday} title="Export today's orders">
-                  <Clock className="w-4 h-4 mr-2" /> Export Today
+                <Button variant="outline" size="sm" onClick={exportToday} title="Export today's orders" className="text-xs sm:text-sm">
+                  <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" /> <span className="hidden sm:inline">Export</span> Today
                 </Button>
               </div>
             </div>
-            <div className="overflow-x-auto">
-              <Table>
+            <div className="overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0">
+              <div className="inline-block min-w-full align-middle">
+                <Table className="min-w-[1200px]">
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="py-4 text-left"> </TableHead>
-                    <TableHead className="py-4 text-left">Order ID</TableHead>
-                    <TableHead className="py-4 text-left">Customer</TableHead>
-                    <TableHead className="py-4 text-center">Address</TableHead>
-                    <TableHead className="py-4 text-center">Mobile</TableHead>
-                    <TableHead className="py-4 text-center">Product</TableHead>
-                    <TableHead className="py-4 text-center">Quantity</TableHead>
-                    <TableHead className="py-4 text-center">Total</TableHead>
-                    <TableHead className="py-4 text-center">Status</TableHead>
-                    <TableHead className="py-4 text-center">Date</TableHead>
-                    <TableHead className="py-4 text-center">Actions</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-left text-xs sm:text-sm whitespace-nowrap"> </TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-left text-xs sm:text-sm whitespace-nowrap">Order ID</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-left text-xs sm:text-sm whitespace-nowrap">Customer</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Address</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Mobile</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Product</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Quantity</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Total</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Status</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Date</TableHead>
+                    <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {filteredOrders.map((order) => (
                     <TableRow key={order.id}>
-                      <TableCell className="py-4">
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4">
                         <input
                           type="checkbox"
                           checked={selectedIds.includes(order.id)}
@@ -538,9 +539,9 @@ Weight: Standard
                           title="Select order"
                         />
                       </TableCell>
-                      <TableCell className="font-mono text-sm py-4">{order.order_id || 'N/A'}</TableCell>
-                      <TableCell className="font-medium py-4">{order.fullName}</TableCell>
-                      <TableCell className="py-4 text-center max-w-xs truncate" title={order.address}>
+                      <TableCell className="font-mono text-xs sm:text-sm py-3 px-2 sm:py-4 sm:px-4 whitespace-nowrap">{order.order_id || 'N/A'}</TableCell>
+                      <TableCell className="font-medium py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">{order.fullName}</TableCell>
+                      <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center max-w-[120px] sm:max-w-xs truncate text-xs sm:text-sm" title={order.address}>
                         {order.address}
                       </TableCell>
                       <TableCell className="py-4 text-center">
@@ -597,6 +598,7 @@ Weight: Standard
                   )}
                 </TableBody>
               </Table>
+            </div>
             </div>
           </CardContent>
         </Card>

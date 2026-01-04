@@ -306,13 +306,13 @@ const Order = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-3 sm:px-4 py-8 sm:py-12">
         {/* Hero Section */}
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="mb-8 sm:mb-12 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             ටිනියා රෝගීන්
           </h1>
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8">
             10,000 වැඩි සංඛ්‍යාවක් සුව ලත් කළ ආයුර්වේදික ආලේපය
           </p>
           <img
@@ -323,7 +323,7 @@ const Order = () => {
         </div>
 
         {/* Features */}
-        <div className="grid md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
           <Card>
             <CardContent className="pt-6 text-center">
               <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
@@ -354,13 +354,13 @@ const Order = () => {
           </Card>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Order Form */}
           <div ref={orderFormRef} className="lg:col-span-2">
             <Card className="shadow-xl">
-              <CardContent className="p-8">
-                <h2 className="text-3xl font-bold mb-6 text-center">ඔබගේ ඇණවුම කරන්න</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <CardContent className="p-4 sm:p-6 lg:p-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">ඔබගේ ඇණවුම කරන්න</h2>
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-sm font-medium mb-2">සම්පූර්ණ නම</label>
                     <Input

@@ -205,7 +205,7 @@ const Dashboard = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           <Card>
             <CardHeader className="flex items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Total Orders</CardTitle>
@@ -278,7 +278,7 @@ const Dashboard = () => {
         </div>
 
         {/* Charts */}
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <Card>
             <CardHeader className="space-y-4">
               <CardTitle>Orders by Status</CardTitle>

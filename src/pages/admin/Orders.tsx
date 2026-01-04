@@ -427,10 +427,10 @@ const Orders = () => {
         {/* Filters */}
         <Card>
           <CardHeader>
-            <CardTitle>Filters</CardTitle>
+            <CardTitle className="text-lg sm:text-xl">Filters</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input
@@ -457,32 +457,33 @@ const Orders = () => {
         {/* Orders Table */}
         <Card>
           <CardContent className="p-0">
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="py-4 text-left">Order ID</TableHead>
-                    <TableHead className="py-4 text-left">Customer</TableHead>
-                    <TableHead className="py-4 text-center">Address</TableHead>
-                    <TableHead className="py-4 text-center">Mobile</TableHead>
-                    <TableHead className="py-4 text-center">Product</TableHead>
-                    <TableHead className="py-4 text-center">Quantity</TableHead>
-                    <TableHead className="py-4 text-center">Total</TableHead>
-                    <TableHead className="py-4 text-center">Status</TableHead>
-                    <TableHead className="py-4 text-center">Date</TableHead>
-                    <TableHead className="py-4 text-center">Time</TableHead>
-                    <TableHead className="py-4 text-center">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
+            <div className="overflow-x-auto overflow-y-hidden -mx-4 sm:mx-0">
+              <div className="inline-block min-w-full align-middle">
+                <Table className="min-w-[1200px]">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-left text-xs sm:text-sm whitespace-nowrap">Order ID</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-left text-xs sm:text-sm whitespace-nowrap">Customer</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Address</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Mobile</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Product</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Quantity</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Total</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Status</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Date</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Time</TableHead>
+                      <TableHead className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm whitespace-nowrap">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
                 <TableBody>
                   {Array.isArray(filteredOrders) && filteredOrders.length > 0 ? (
                     <>
                       {filteredOrders.map((order) => (
                         <TableRow key={order.id}>
-                          <TableCell className="font-mono text-sm py-4">{order.order_id || 'N/A'}</TableCell>
-                          <TableCell className="font-medium py-4">{order.fullName}</TableCell>
-                          <TableCell className="py-4 text-center max-w-xs truncate" title={order.address}>{order.address || 'N/A'}</TableCell>
-                          <TableCell className="py-4 text-center">
+                          <TableCell className="font-mono text-xs sm:text-sm py-3 px-2 sm:py-4 sm:px-4 whitespace-nowrap">{order.order_id || 'N/A'}</TableCell>
+                          <TableCell className="font-medium py-3 px-2 sm:py-4 sm:px-4 text-xs sm:text-sm whitespace-nowrap">{order.fullName}</TableCell>
+                          <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center max-w-[150px] sm:max-w-xs truncate text-xs sm:text-sm" title={order.address}>{order.address || 'N/A'}</TableCell>
+                          <TableCell className="py-3 px-2 sm:py-4 sm:px-4 text-center text-xs sm:text-sm">
                             <div className="flex flex-col items-center ">
                               <span className="text-sm">{order.mobile || 'N/A'}</span>
                               {order.mobile2 && (
@@ -579,7 +580,8 @@ const Orders = () => {
                     </TableRow>
                   )}
                 </TableBody>
-              </Table>
+                </Table>
+              </div>
             </div>
           </CardContent>
         </Card>

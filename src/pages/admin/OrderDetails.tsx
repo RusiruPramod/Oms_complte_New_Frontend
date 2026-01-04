@@ -236,17 +236,17 @@ const OrderDetails = () => {
   return (
     <AdminLayout>
       <div className="space-y-6">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
           <Button variant="outline" size="icon" onClick={() => navigate("/admin/orders")}>
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
           <div>
-            <h1 className="text-4xl font-bold">Order Details</h1>
-            <p className="text-muted-foreground mt-1">Order ID: {order.id}</p>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Order Details</h1>
+            <p className="text-sm sm:text-base text-muted-foreground mt-1">Order ID: {order.id}</p>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Order Information */}
           <div className="lg:col-span-2 space-y-6">
             <Card>
